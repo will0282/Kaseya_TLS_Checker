@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ScriptExport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.kaseya.com/vsa/2008/12/Scripting">
+  <Procedure name="CF_TLS_1.0_Check" treePres="3" id="27645538" folderId="360712767420668" treeFullPath="myProcedures - cg-exchange.local/waycardiadm.Production.Custom Fields">
+    <Body description="">
+      <If description="Checks and updates the CF&#xD;&#xA;SCHANNEL\Protocols\TLS 1.0\Server\DisabledByDefault">
+        <Condition name="CheckRegistryValue">
+          <Parameter xsi:type="StringParameter" name="RegistryPath" value="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server\DisabledByDefault" />
+          <Parameter xsi:type="EnumParameter" name="Condition" value="Exists" />
+          <Parameter xsi:type="StringParameter" name="Value" value="" />
+        </Condition>
+        <Then>
+          <If description="">
+            <Condition name="CheckRegistryValue">
+              <Parameter xsi:type="StringParameter" name="RegistryPath" value="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server\DisabledByDefault" />
+              <Parameter xsi:type="EnumParameter" name="Condition" value="Equals" />
+              <Parameter xsi:type="StringParameter" name="Value" value="1" />
+            </Condition>
+            <Then>
+              <Statement name="UpdateSystemInfo" continueOnFail="false" osType="Windows">
+                <Parameter xsi:type="StringParameter" name="ColumnName" value="TLS 1.0\Server\DisabledByDefault" />
+                <Parameter xsi:type="StringParameter" name="Value" value="Disabled" />
+              </Statement>
+            </Then>
+            <Else>
+              <Statement name="UpdateSystemInfo" continueOnFail="false" osType="Windows">
+                <Parameter xsi:type="StringParameter" name="ColumnName" value="TLS 1.0\Server\DisabledByDefault" />
+                <Parameter xsi:type="StringParameter" name="Value" value="Enabled" />
+              </Statement>
+            </Else>
+          </If>
+        </Then>
+      </If>
+      <If description="">
+        <Condition name="CheckRegistryValue">
+          <Parameter xsi:type="StringParameter" name="RegistryPath" value="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server\DisabledByDefault" />
+          <Parameter xsi:type="EnumParameter" name="Condition" value="NotExists" />
+          <Parameter xsi:type="StringParameter" name="Value" value="" />
+        </Condition>
+        <Then>
+          <Statement name="UpdateSystemInfo" continueOnFail="false" osType="Windows">
+            <Parameter xsi:type="StringParameter" name="ColumnName" value="TLS 1.0\Server\DisabledByDefault" />
+            <Parameter xsi:type="StringParameter" name="Value" value="Does not Exist" />
+          </Statement>
+        </Then>
+      </If>
+      <If description="SCHANNEL\Protocols\TLS 1.0\Server\Enabled">
+        <Condition name="CheckRegistryValue">
+          <Parameter xsi:type="StringParameter" name="RegistryPath" value="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server\Enabled" />
+          <Parameter xsi:type="EnumParameter" name="Condition" value="Exists" />
+          <Parameter xsi:type="StringParameter" name="Value" value="" />
+        </Condition>
+        <Then>
+          <If description="">
+            <Condition name="CheckRegistryValue">
+              <Parameter xsi:type="StringParameter" name="RegistryPath" value="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server\Enabled" />
+              <Parameter xsi:type="EnumParameter" name="Condition" value="Equals" />
+              <Parameter xsi:type="StringParameter" name="Value" value="0" />
+            </Condition>
+            <Then>
+              <Statement name="UpdateSystemInfo" continueOnFail="false" osType="Windows">
+                <Parameter xsi:type="StringParameter" name="ColumnName" value="TLS 1.0\Server\Enabled" />
+                <Parameter xsi:type="StringParameter" name="Value" value="Disabled" />
+              </Statement>
+            </Then>
+            <Else>
+              <Statement name="UpdateSystemInfo" continueOnFail="false" osType="Windows">
+                <Parameter xsi:type="StringParameter" name="ColumnName" value="TLS 1.0\Server\Enabled" />
+                <Parameter xsi:type="StringParameter" name="Value" value="Enabled" />
+              </Statement>
+            </Else>
+          </If>
+        </Then>
+      </If>
+      <If description="">
+        <Condition name="CheckRegistryValue">
+          <Parameter xsi:type="StringParameter" name="RegistryPath" value="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server\Enabled" />
+          <Parameter xsi:type="EnumParameter" name="Condition" value="NotExists" />
+          <Parameter xsi:type="StringParameter" name="Value" value="" />
+        </Condition>
+        <Then>
+          <Statement name="UpdateSystemInfo" continueOnFail="false" osType="Windows">
+            <Parameter xsi:type="StringParameter" name="ColumnName" value="TLS 1.0\Server\Enabled" />
+            <Parameter xsi:type="StringParameter" name="Value" value="Does not Exist" />
+          </Statement>
+        </Then>
+      </If>
+      <If description="SCHANNEL\Protocols\TLS 1.0\Client\DisabledByDefault">
+        <Condition name="CheckRegistryValue">
+          <Parameter xsi:type="StringParameter" name="RegistryPath" value="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client\DisabledByDefault" />
+          <Parameter xsi:type="EnumParameter" name="Condition" value="Exists" />
+          <Parameter xsi:type="StringParameter" name="Value" value="" />
+        </Condition>
+        <Then>
+          <If description="">
+            <Condition name="CheckRegistryValue">
+              <Parameter xsi:type="StringParameter" name="RegistryPath" value="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client\DisabledByDefault" />
+              <Parameter xsi:type="EnumParameter" name="Condition" value="Equals" />
+              <Parameter xsi:type="StringParameter" name="Value" value="1" />
+            </Condition>
+            <Then>
+              <Statement name="UpdateSystemInfo" continueOnFail="false" osType="Windows">
+                <Parameter xsi:type="StringParameter" name="ColumnName" value="TLS 1.0\Client\DisabledByDefault" />
+                <Parameter xsi:type="StringParameter" name="Value" value="Disabled" />
+              </Statement>
+            </Then>
+            <Else>
+              <Statement name="UpdateSystemInfo" continueOnFail="false" osType="Windows">
+                <Parameter xsi:type="StringParameter" name="ColumnName" value="TLS 1.0\Client\DisabledByDefault" />
+                <Parameter xsi:type="StringParameter" name="Value" value="Enabled" />
+              </Statement>
+            </Else>
+          </If>
+        </Then>
+      </If>
+      <If description="">
+        <Condition name="CheckRegistryValue">
+          <Parameter xsi:type="StringParameter" name="RegistryPath" value="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client\DisabledByDefault" />
+          <Parameter xsi:type="EnumParameter" name="Condition" value="NotExists" />
+          <Parameter xsi:type="StringParameter" name="Value" value="" />
+        </Condition>
+        <Then>
+          <Statement name="UpdateSystemInfo" continueOnFail="false" osType="Windows">
+            <Parameter xsi:type="StringParameter" name="ColumnName" value="TLS 1.0\Client\DisabledByDefault" />
+            <Parameter xsi:type="StringParameter" name="Value" value="Does not Exist" />
+          </Statement>
+        </Then>
+      </If>
+      <If description="SCHANNEL\Protocols\TLS 1.0\Client\Enabled">
+        <Condition name="CheckRegistryValue">
+          <Parameter xsi:type="StringParameter" name="RegistryPath" value="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client\Enabled" />
+          <Parameter xsi:type="EnumParameter" name="Condition" value="Exists" />
+          <Parameter xsi:type="StringParameter" name="Value" value="" />
+        </Condition>
+        <Then>
+          <If description="">
+            <Condition name="CheckRegistryValue">
+              <Parameter xsi:type="StringParameter" name="RegistryPath" value="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client\Enabled" />
+              <Parameter xsi:type="EnumParameter" name="Condition" value="Equals" />
+              <Parameter xsi:type="StringParameter" name="Value" value="0" />
+            </Condition>
+            <Then>
+              <Statement name="UpdateSystemInfo" continueOnFail="false" osType="Windows">
+                <Parameter xsi:type="StringParameter" name="ColumnName" value="TLS 1.0\Client\Enabled" />
+                <Parameter xsi:type="StringParameter" name="Value" value="Disabled" />
+              </Statement>
+            </Then>
+            <Else>
+              <Statement name="UpdateSystemInfo" continueOnFail="false" osType="Windows">
+                <Parameter xsi:type="StringParameter" name="ColumnName" value="TLS 1.0\Client\Enabled" />
+                <Parameter xsi:type="StringParameter" name="Value" value="Enabled" />
+              </Statement>
+            </Else>
+          </If>
+        </Then>
+      </If>
+      <If description="">
+        <Condition name="CheckRegistryValue">
+          <Parameter xsi:type="StringParameter" name="RegistryPath" value="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client\Enabled" />
+          <Parameter xsi:type="EnumParameter" name="Condition" value="NotExists" />
+          <Parameter xsi:type="StringParameter" name="Value" value="" />
+        </Condition>
+        <Then>
+          <Statement name="UpdateSystemInfo" continueOnFail="false" osType="Windows">
+            <Parameter xsi:type="StringParameter" name="ColumnName" value="TLS 1.0\Client\Enabled" />
+            <Parameter xsi:type="StringParameter" name="Value" value="Does not Exist" />
+          </Statement>
+        </Then>
+      </If>
+    </Body>
+  </Procedure>
+</ScriptExport>
